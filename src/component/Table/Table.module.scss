@@ -1,0 +1,25 @@
+.table {
+	display: grid;
+	grid-template-rows: 20px 300px;
+	padding: 5px;
+	&__container {
+		margin: 7px;
+		border: 1px solid rgb(102, 102, 102);
+		border-radius: 6px;
+	}
+	&__header {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		background-color: rgb(102, 102, 102);
+	}
+	&__caption {
+		color: rgba(215, 219, 222, 0.789);
+		margin: 0;
+	}
+	&__employe {
+		display: flex;
+		gap: 105px;
+		align-items: center;
+	}
+}

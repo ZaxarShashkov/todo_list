@@ -4,11 +4,10 @@
 	justify-content: center;
 	align-items: center;
 	&__container {
-		width: 650px;
+		width: 900px;
 		height: 350px;
 		background-color: rgb(48, 47, 47);
 		display: grid;
-		grid-template-columns: 250px 450px;
+		grid-template-columns: 250px 650px;
 	}
 }
-
