@@ -1,0 +1,14 @@
+.App {
+	display: flex;
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
+	&__container {
+		width: 650px;
+		height: 350px;
+		background-color: rgb(48, 47, 47);
+		display: grid;
+		grid-template-columns: 250px 450px;
+	}
+}
+
