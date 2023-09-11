@@ -6,7 +6,7 @@ import { EmployeeContext } from '../Table/Table';
 
 const Employe = () => {
 	const { theme } = useContext(ThemeContext);
-	const { name, age, subscription, employed } = useContext(EmployeeContext);
+	const { name, age, subscription, employment } = useContext(EmployeeContext);
 	console.log(name);
 	return (
 		<div
@@ -16,13 +16,10 @@ const Employe = () => {
 			<p className={styles.table__caption}>{name}</p>
 			<p className={styles.table__caption}>{age}</p>
 			<p className={styles.table__caption}>{subscription}</p>
-			<p className={styles.table__caption}>{employed}</p>
+			<p className={styles.table__caption}>{employment}</p>
 		</div>
 	);
 };
 
-// className={cn(styles.table__caption, {
-// 	[styles.table__caption_light]: theme,
-// })}
 
 export default Employe;

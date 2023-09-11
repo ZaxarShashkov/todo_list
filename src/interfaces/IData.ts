@@ -1,6 +1,6 @@
 export interface IData {
 	name: string;
-	age: number;
+	age: number | string;
 	subscription: string;
 	employment: string;
 }

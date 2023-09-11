@@ -10,31 +10,32 @@ import { ThemeContext } from '../../App';
 import cn from 'classnames';
 import styles from './Form.module.scss';
 import Select from '../Select/Select';
+import { IData } from '../../interfaces/IData';
 
 interface IValue {
 	name: string;
 	age: number | string;
 	subscription: string;
-	employed: string;
+	employment: string;
 }
 
 export const FormContext = createContext<any>(null);
 
 const Form = (): JSX.Element => {
-	const [value, setValue] = useState<IValue>({
+	const [value, setValue] = useState<IData>({
 		name: '',
 		age: '',
 		subscription: '',
-		employed: '',
+		employment: '',
 	});
 	const [checked, setChecked] = useState<boolean>(false);
 	const { theme, handleChangeTheme, data, setData } = useContext(ThemeContext);
 
 	useEffect(() => {
 		if (checked) {
-			setValue({ ...value, employed: 'Employed' });
+			setValue({ ...value, employment: 'Employed' });
 		} else {
-			setValue({ ...value, employed: 'Unemployed' });
+			setValue({ ...value, employment: 'Unemployed' });
 		}
 	}, [checked]);
 
@@ -52,9 +53,8 @@ const Form = (): JSX.Element => {
 	const addEmployee = (e: MouseEvent) => {
 		e.preventDefault();
 		setData([...data, value]);
-		setValue({ name: '', age: '', subscription: '', employed: '' });
+		setValue({ name: '', age: '', subscription: '', employment: '' });
 	};
-
 
 	return (
 		<FormContext.Provider value={{ value, setValue }}>
