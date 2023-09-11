@@ -1,20 +1,15 @@
-import React, {
-	useState,
-	MouseEvent,
-	useEffect,
-	useRef,
-	useContext,
-} from 'react';
+import React, { useState, MouseEvent, useEffect, useRef, useContext } from 'react';
 
 import styles from './Select.module.scss';
 import cn from 'classnames';
 import { FormContext } from '../Form/Form';
+import { ThemeContext } from '../../App';
 
 const Select = (): JSX.Element => {
 	const [isVisible, setIsVisible] = useState<boolean>(false);
 	const { value, setValue } = useContext(FormContext);
 
-	console.log(value);
+	const { theme } = useContext(ThemeContext);
 
 	const onVisible = () => {
 		setIsVisible((isVisible) => !isVisible);
@@ -43,9 +38,17 @@ const Select = (): JSX.Element => {
 		<div className={styles.select__container} ref={positionRef}>
 			<div className={styles.select}>
 				<div className={styles.select__container}>
-					<div className={styles.select__select} onClick={onVisible}>
+					<div
+						className={cn(styles.select__select, {
+							[styles.select__select_light]: theme,
+						})}
+						onClick={onVisible}>
 						<div className={styles.select__date}>
-							<span>{value.subscription}</span>
+							<span>
+								{value.subscription
+									? value.subscription
+									: 'Enter your subscription'}
+							</span>
 						</div>
 						<div
 							className={cn({
@@ -69,10 +72,15 @@ const Select = (): JSX.Element => {
 					</div>
 				</div>
 				{isVisible && (
-					<div className={styles.select__dropdown}>
+					<div
+						className={cn(styles.select__dropdown, {
+							[styles.select__dropdown_light]: theme,
+						})}>
 						<React.Fragment key={'First new'}>
 							<div
-								className={styles.select__item}
+								className={cn(styles.select__item, {
+									[styles.select__item_light]: theme,
+								})}
 								data-value='Subscribed'
 								onClick={(e) => handleClick(e)}>
 								<div className={styles.select__date}>Subscribed</div>
@@ -95,7 +103,9 @@ const Select = (): JSX.Element => {
 						</React.Fragment>
 						<React.Fragment key={'Old ones first'}>
 							<div
-								className={styles.select__item}
+								className={cn(styles.select__item, {
+									[styles.select__item_light]: theme,
+								})}
 								onClick={(e) => handleClick(e)}
 								data-value='Not Subscribed'>
 								<div className={styles.select__date}>Not Subscribed</div>
@@ -118,7 +128,9 @@ const Select = (): JSX.Element => {
 						</React.Fragment>
 						<React.Fragment key={'Other'}>
 							<div
-								className={styles.select__item}
+								className={cn(styles.select__item, {
+									[styles.select__item_light]: theme,
+								})}
 								onClick={(e) => handleClick(e)}
 								data-value='Other'>
 								<div className={styles.select__date}>Other</div>

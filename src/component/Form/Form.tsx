@@ -15,8 +15,7 @@ import { IData } from '../../interfaces/IData';
 export const FormContext = createContext<any>(null);
 
 const Form = (): JSX.Element => {
-	const { theme, handleChangeTheme, data, setData, setSelectedEmployee, selectedEmployee } =
-		useContext(ThemeContext);
+	const { theme, handleChangeTheme, data, setData, selectedEmployee } = useContext(ThemeContext);
 
 	const [value, setValue] = useState<IData>({
 		id: data.length + 1,

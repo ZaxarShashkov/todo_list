@@ -20,7 +20,6 @@ function App() {
 	]);
 
 	const [selectedEmployee, setSelectedEmployee] = useState<any>(null);
-	console.log(selectedEmployee, 'selected');
 
 	const [theme, setTheme] = useState<boolean>(false);
 
