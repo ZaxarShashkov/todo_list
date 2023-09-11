@@ -37,26 +37,26 @@ function App() {
 	};
 
 	useEffect(() => {
+		getLocalStorage('data');
+	}, []);
+
+	useEffect(() => {
 		localStorage.setItem('data', JSON.stringify(data));
 		console.log(localStorage.getItem('data'));
 	}, [data]);
-
-	useEffect(() => {
-		getLocalStorage('data');
-	}, []);
 
 	const getLocalStorage = (key: string, defaultValue = null): string | null => {
 		const store: string | null = localStorage.getItem(key);
 
 		if (typeof store === 'string') {
-			return JSON.parse(store);
+			setData(JSON.parse(store));
 		}
 
 		return defaultValue;
 	};
 
 	return (
-		<ThemeContext.Provider value={{ theme, handleChangeTheme }}>
+		<ThemeContext.Provider value={{ theme, handleChangeTheme, setData, data }}>
 			<div className={styles.App}>
 				<div
 					className={cn(styles.App__container, {

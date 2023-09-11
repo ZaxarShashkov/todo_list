@@ -1,4 +1,11 @@
-import React, { useState, useContext, ChangeEvent, MouseEvent, createContext } from 'react';
+import React, {
+	useState,
+	useContext,
+	ChangeEvent,
+	MouseEvent,
+	createContext,
+	useEffect,
+} from 'react';
 import { ThemeContext } from '../../App';
 import cn from 'classnames';
 import styles from './Form.module.scss';
@@ -8,28 +15,49 @@ interface IValue {
 	name: string;
 	age: number | string;
 	subscription: string;
+	employed: string;
 }
 
 export const FormContext = createContext<any>(null);
 
 const Form = (): JSX.Element => {
-	const [value, setValue] = useState<IValue>({ name: '', age: '', subscription: '' });
-	const { theme, handleChangeTheme } = useContext(ThemeContext);
+	const [value, setValue] = useState<IValue>({
+		name: '',
+		age: '',
+		subscription: '',
+		employed: '',
+	});
+	const [checked, setChecked] = useState<boolean>(false);
+	const { theme, handleChangeTheme, data, setData } = useContext(ThemeContext);
+
+	useEffect(() => {
+		if (checked) {
+			setValue({ ...value, employed: 'Employed' });
+		} else {
+			setValue({ ...value, employed: 'Unemployed' });
+		}
+	}, [checked]);
 
 	const onChangeName = (e: ChangeEvent<HTMLInputElement>) => {
 		setValue({ ...value, name: e.currentTarget.value });
-		console.log(value);
 	};
 	const onChangeAge = (e: ChangeEvent<HTMLInputElement>) => {
 		setValue({ ...value, age: e.currentTarget.value });
 	};
 
-	// const handleClick = (e: MouseEvent<HTMLInputElement>) => {
-	// 	setValue({ ...value, subscription: e.currentTarget.value });
-	// };
+	const onChangeEmployed = () => {
+		setChecked(!checked);
+	};
+
+	const addEmployee = (e: MouseEvent) => {
+		e.preventDefault();
+		setData([...data, value]);
+		setValue({ name: '', age: '', subscription: '', employed: '' });
+	};
+
 
 	return (
-		<FormContext.Provider value={{ value , setValue }}>
+		<FormContext.Provider value={{ value, setValue }}>
 			<div className={styles.form__container}>
 				<p
 					className={cn(styles.form__caption, {
@@ -66,6 +94,8 @@ const Form = (): JSX.Element => {
 							name='checkbox'
 							type='checkbox'
 							className={styles.form__checkbox}
+							checked={checked}
+							onChange={onChangeEmployed}
 						/>
 						<label
 							htmlFor='checkbox'
@@ -78,7 +108,8 @@ const Form = (): JSX.Element => {
 					<button
 						className={cn(styles.form__button, {
 							[styles.form__button_light]: theme,
-						})}>
+						})}
+						onClick={addEmployee}>
 						Insert
 					</button>
 					<div className={styles.form__line}></div>
