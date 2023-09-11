@@ -1,7 +1,8 @@
 import React, { ChangeEvent, useContext } from 'react';
 
-import styles from './Checkbox.module.scss';
 import { FormContext } from '../Form/Form';
+
+import styles from './Checkbox.module.scss';
 
 export const CheckBox = () => {
 	const { checked, setChecked } = useContext(FormContext);

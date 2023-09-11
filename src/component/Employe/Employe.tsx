@@ -1,18 +1,19 @@
-import React, { useContext, useState, MouseEvent } from 'react';
-import styles from './Employe.module.scss';
-import cn from 'classnames';
+import React, { useContext, useState, MouseEvent, ReactNode } from 'react';
+
 import { ThemeContext } from '../../App';
 import { EmployeeContext } from '../Table/Table';
 
-const Employe = () => {
+import styles from './Employe.module.scss';
+import cn from 'classnames';
+
+const Employe = (): ReactNode => {
 	const [select, setSelect] = useState<boolean>(false);
-	const { theme, selectedEmployee, setSelectedEmployee } = useContext(ThemeContext);
+	const { theme, setSelectedEmployee } = useContext(ThemeContext);
 	const { id, name, age, subscription, employment } = useContext(EmployeeContext);
 
 	const handleSelect = (e: MouseEvent<HTMLDivElement>) => {
 		setSelect(!select);
 		setSelectedEmployee(e.currentTarget.dataset.id);
-		console.log();
 	};
 
 	return (

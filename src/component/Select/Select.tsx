@@ -1,11 +1,12 @@
-import React, { useState, MouseEvent, useEffect, useRef, useContext } from 'react';
+import React, { useState, MouseEvent, useEffect, useRef, useContext, ReactNode } from 'react';
 
-import styles from './Select.module.scss';
-import cn from 'classnames';
 import { FormContext } from '../Form/Form';
 import { ThemeContext } from '../../App';
 
-const Select = (): JSX.Element => {
+import styles from './Select.module.scss';
+import cn from 'classnames';
+
+const Select = (): ReactNode => {
 	const [isVisible, setIsVisible] = useState<boolean>(false);
 	const { value, setValue } = useContext(FormContext);
 

@@ -1,16 +1,16 @@
-import React, { useContext, createContext } from 'react';
-import cn from 'classnames';
-import styles from './Table.module.scss';
-import Employe from '../Employe/Employe';
+import React, { useContext, createContext, ReactNode } from 'react';
+
 import { ThemeContext } from '../../App';
 import { IData } from '../../interfaces/IData';
 
-const { v4: uuidv4 } = require('uuid');
+import Employe from '../Employe/Employe';
 
-type Props = {};
+import cn from 'classnames';
+import styles from './Table.module.scss';
+
 export const EmployeeContext = createContext<any>(null);
 
-const Table = (props: Props) => {
+const Table = (): ReactNode => {
 	const { theme, data } = useContext(ThemeContext);
 
 	return (

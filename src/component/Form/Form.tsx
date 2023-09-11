@@ -5,20 +5,22 @@ import React, {
 	MouseEvent,
 	createContext,
 	useEffect,
+	ReactNode,
 } from 'react';
+import { IData } from '../../interfaces/IData';
 import { ThemeContext } from '../../App';
+
+import Select from '../Select/Select';
+import { CheckBox } from '../Checkbox/Checkbox';
+
 import cn from 'classnames';
 import styles from './Form.module.scss';
-import Select from '../Select/Select';
-import { IData } from '../../interfaces/IData';
-import { CheckBox } from '../Checkbox/Checkbox';
 import { v4 as uuidv4 } from 'uuid';
 
 export const FormContext = createContext<any>(null);
 
-const Form = (): JSX.Element => {
+const Form = (): ReactNode => {
 	const { theme, handleChangeTheme, data, setData, selectedEmployee } = useContext(ThemeContext);
-	console.log(uuidv4());
 	const [value, setValue] = useState<IData>({
 		id: uuidv4(),
 		name: '',

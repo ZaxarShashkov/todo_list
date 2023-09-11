@@ -9,14 +9,20 @@ export const ThemeContext = createContext<any>(null);
 
 function App() {
 	const [data, setData] = useState<IData[]>([
-		{ id: 1, name: 'Zakhar', age: 27, subscription: 'Subscribed', employment: 'Employed' },
-		{ id: 2, name: 'Alex', age: 35, subscription: 'Other', employment: 'Unemployed' },
-		{ id: 3, name: 'Denis', age: 25, subscription: 'Not Subscribed', employment: 'Employed' },
-		{ id: 4, name: 'Kseniya', age: 23, subscription: 'Subscribed', employment: 'Employed' },
-		{ id: 5, name: 'Mariya', age: 18, subscription: 'Other', employment: 'Unemployed' },
-		{ id: 6, name: 'Dmitriy', age: 43, subscription: 'Not Subscribed', employment: 'Employed' },
-		{ id: 7, name: 'Ivan', age: 39, subscription: 'Subscribed', employment: 'Employed' },
-		{ id: 8, name: 'Viktor', age: 21, subscription: 'Other', employment: 'Unemployed' },
+		{ id: '1', name: 'Zakhar', age: 27, subscription: 'Subscribed', employment: 'Employed' },
+		{ id: '2', name: 'Alex', age: 35, subscription: 'Other', employment: 'Unemployed' },
+		{ id: '3', name: 'Denis', age: 25, subscription: 'Not Subscribed', employment: 'Employed' },
+		{ id: '4', name: 'Kseniya', age: 23, subscription: 'Subscribed', employment: 'Employed' },
+		{ id: '5', name: 'Mariya', age: 18, subscription: 'Other', employment: 'Unemployed' },
+		{
+			id: '6',
+			name: 'Dmitriy',
+			age: 43,
+			subscription: 'Not Subscribed',
+			employment: 'Employed',
+		},
+		{ id: '7', name: 'Ivan', age: 39, subscription: 'Subscribed', employment: 'Employed' },
+		{ id: '8', name: 'Viktor', age: 21, subscription: 'Other', employment: 'Unemployed' },
 	]);
 
 	const [selectedEmployee, setSelectedEmployee] = useState<any>(null);
