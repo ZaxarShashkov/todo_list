@@ -10,7 +10,7 @@ import styles from './Table.module.scss';
 
 export const EmployeeContext = createContext<any>(null);
 
-const Table = (): ReactNode => {
+const Table = (): JSX.Element => {
 	const { theme, data } = useContext(ThemeContext);
 
 	return (

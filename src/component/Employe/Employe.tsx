@@ -6,7 +6,7 @@ import { EmployeeContext } from '../Table/Table';
 import styles from './Employe.module.scss';
 import cn from 'classnames';
 
-const Employe = (): ReactNode => {
+const Employe = (): JSX.Element => {
 	const [select, setSelect] = useState<boolean>(false);
 	const { theme, setSelectedEmployee } = useContext(ThemeContext);
 	const { id, name, age, subscription, employment } = useContext(EmployeeContext);

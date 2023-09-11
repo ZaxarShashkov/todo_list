@@ -19,7 +19,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 export const FormContext = createContext<any>(null);
 
-const Form = (): ReactNode => {
+const Form = (): JSX.Element => {
 	const { theme, handleChangeTheme, data, setData, selectedEmployee } = useContext(ThemeContext);
 	const [value, setValue] = useState<IData>({
 		id: uuidv4(),

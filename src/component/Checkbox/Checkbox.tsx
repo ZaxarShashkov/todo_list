@@ -4,7 +4,7 @@ import { FormContext } from '../Form/Form';
 
 import styles from './Checkbox.module.scss';
 
-export const CheckBox = () => {
+export const CheckBox = (): JSX.Element => {
 	const { checked, setChecked } = useContext(FormContext);
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

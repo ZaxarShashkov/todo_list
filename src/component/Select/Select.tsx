@@ -6,7 +6,7 @@ import { ThemeContext } from '../../App';
 import styles from './Select.module.scss';
 import cn from 'classnames';
 
-const Select = (): ReactNode => {
+const Select = (): JSX.Element => {
 	const [isVisible, setIsVisible] = useState<boolean>(false);
 	const { value, setValue } = useContext(FormContext);
 

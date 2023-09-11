@@ -7,7 +7,7 @@ import { IData } from './interfaces/IData';
 
 export const ThemeContext = createContext<any>(null);
 
-function App() {
+function App(): JSX.Element {
 	const [data, setData] = useState<IData[]>([
 		{ id: '1', name: 'Zakhar', age: 27, subscription: 'Subscribed', employment: 'Employed' },
 		{ id: '2', name: 'Alex', age: 35, subscription: 'Other', employment: 'Unemployed' },
