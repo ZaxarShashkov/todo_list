@@ -11,7 +11,8 @@ const Employe = () => {
 
 	const handleSelect = (e: MouseEvent<HTMLDivElement>) => {
 		setSelect(!select);
-		setSelectedEmployee(Number(e.currentTarget.dataset.id));
+		setSelectedEmployee(e.currentTarget.dataset.id);
+		console.log();
 	};
 
 	return (

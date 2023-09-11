@@ -12,14 +12,15 @@ import styles from './Form.module.scss';
 import Select from '../Select/Select';
 import { IData } from '../../interfaces/IData';
 import { CheckBox } from '../Checkbox/Checkbox';
+import { v4 as uuidv4 } from 'uuid';
 
 export const FormContext = createContext<any>(null);
 
 const Form = (): JSX.Element => {
 	const { theme, handleChangeTheme, data, setData, selectedEmployee } = useContext(ThemeContext);
-
+	console.log(uuidv4());
 	const [value, setValue] = useState<IData>({
-		id: data.length + 1,
+		id: uuidv4(),
 		name: '',
 		age: '',
 		subscription: '',
@@ -69,7 +70,7 @@ const Form = (): JSX.Element => {
 	const addEmployee = (e: MouseEvent) => {
 		e.preventDefault();
 		setData([...data, value]);
-		setValue({ id: data.length, name: '', age: '', subscription: '', employment: '' });
+		setValue({ id: uuidv4(), name: '', age: '', subscription: '', employment: '' });
 	};
 
 	return (

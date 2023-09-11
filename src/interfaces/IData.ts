@@ -1,5 +1,5 @@
 export interface IData {
-	id: number;
+	id: number | string;
 	name: string;
 	age: number | string;
 	subscription: string;

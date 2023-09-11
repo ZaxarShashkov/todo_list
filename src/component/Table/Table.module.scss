@@ -28,5 +28,16 @@
 		gap: 105px;
 		align-items: center;
 	}
-
+	&__main {
+		overflow-y: scroll;
+		&::-webkit-scrollbar {
+			width: 4px;
+			height: 18px;
+		}
+		&::-webkit-scrollbar-thumb {
+			border-radius: 10px;
+			width: 4px;
+			background: green;
+		}
+	}
 }

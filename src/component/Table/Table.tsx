@@ -4,7 +4,7 @@ import styles from './Table.module.scss';
 import Employe from '../Employe/Employe';
 import { ThemeContext } from '../../App';
 import { IData } from '../../interfaces/IData';
-// import { v4 as uuidv4 } from 'uuid';
+
 const { v4: uuidv4 } = require('uuid');
 
 type Props = {};
