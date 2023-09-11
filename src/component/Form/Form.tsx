@@ -11,6 +11,7 @@ import cn from 'classnames';
 import styles from './Form.module.scss';
 import Select from '../Select/Select';
 import { IData } from '../../interfaces/IData';
+import { CheckBox } from '../Checkbox/Checkbox';
 
 export const FormContext = createContext<any>(null);
 
@@ -72,7 +73,7 @@ const Form = (): JSX.Element => {
 	};
 
 	return (
-		<FormContext.Provider value={{ value, setValue }}>
+		<FormContext.Provider value={{ value, setValue, checked, setChecked }}>
 			<div className={styles.form__container}>
 				<p
 					className={cn(styles.form__caption, {
@@ -136,14 +137,7 @@ const Form = (): JSX.Element => {
 						<Select />
 					</div>
 					<div className={styles.checkbox__container}>
-						<input
-							id='checkbox'
-							name='checkbox'
-							type='checkbox'
-							className={styles.form__checkbox}
-							checked={checked}
-							onChange={onChangeEmployed}
-						/>
+						<CheckBox />
 						<label
 							htmlFor='checkbox'
 							className={cn(styles.form__label, {

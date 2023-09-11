@@ -29,6 +29,12 @@
 .select {
 	position: relative;
 	width: 250px;
+	&__placeholder {
+		color: rgba(215, 219, 222, 0.789);
+		&_light {
+			color: rgb(102, 102, 102);
+		}
+	}
 	&__container {
 		display: flex;
 		column-gap: 15px;
@@ -41,15 +47,12 @@
 		height: 30px;
 		border-radius: 6px;
 		background-color: rgb(48, 47, 47);
-		padding: 5px 0 0px 7px;
+		padding: 5px 0 0px 5px;
 		border: 1px solid rgb(102, 102, 102);
 		width: 100%;
 		caret-color: green;
 		color: #d7dbdec9;
 		cursor: pointer;
-		&_placeholder {
-			color: rgba(215, 219, 222, 0.789);
-		}
 		&:hover,
 		&:focus {
 			border-color: green;

@@ -35,6 +35,9 @@
 		}
 		&_light {
 			background-color: #fff;
+			&::placeholder {
+				color: rgb(102, 102, 102);
+			}
 		}
 		&_container {
 			display: flex;

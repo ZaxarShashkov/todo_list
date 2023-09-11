@@ -44,7 +44,10 @@ const Select = (): JSX.Element => {
 						})}
 						onClick={onVisible}>
 						<div className={styles.select__date}>
-							<span>
+							<span
+								className={cn(styles.select__placeholder, {
+									[styles.select__placeholder_light]: theme,
+								})}>
 								{value.subscription
 									? value.subscription
 									: 'Enter your subscription'}
