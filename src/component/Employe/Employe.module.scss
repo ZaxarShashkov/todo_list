@@ -1,11 +1,14 @@
 .table {
 	&__caption {
-		color: rgba(215, 219, 222, 0.789);
 		margin: 0;
 	}
 	&__employe {
+		color: rgba(215, 219, 222, 0.789);
 		display: flex;
 		gap: 105px;
 		align-items: center;
+		&_light {
+			color: #000;
+		}
 	}
 }

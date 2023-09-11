@@ -9,5 +9,12 @@
 		background-color: rgb(48, 47, 47);
 		display: grid;
 		grid-template-columns: 250px 650px;
+		&_light {
+			width: 900px;
+			height: 350px;
+			background-color: #fff;
+			display: grid;
+			grid-template-columns: 250px 650px;
+		}
 	}
 }

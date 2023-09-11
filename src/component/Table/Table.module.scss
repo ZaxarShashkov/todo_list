@@ -12,10 +12,16 @@
 		justify-content: space-around;
 		align-items: center;
 		background-color: rgb(102, 102, 102);
+		&_light {
+			background-color: rgb(165, 164, 164);
+		}
 	}
 	&__caption {
 		color: rgba(215, 219, 222, 0.789);
 		margin: 0;
+		&_light {
+			color: #000;
+		}
 	}
 	&__employe {
 		display: flex;

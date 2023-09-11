@@ -1,11 +1,16 @@
-import React from 'react';
-import styles from './Employe.module.scss'
+import React, { useContext } from 'react';
+import styles from './Employe.module.scss';
+import cn from 'classnames';
+import { ThemeContext } from '../../App';
 
-type Props = {};
+const Employe = () => {
+	const { theme } = useContext(ThemeContext);
 
-const Employe = (props: Props) => {
 	return (
-		<div className={styles.table__employe}>
+		<div
+			className={cn(styles.table__employe, {
+				[styles.table__employe_light]: theme,
+			})}>
 			<p className={styles.table__caption}>Zakhar</p>
 			<p className={styles.table__caption}>27</p>
 			<p className={styles.table__caption}>Subscribed</p>
@@ -13,5 +18,9 @@ const Employe = (props: Props) => {
 		</div>
 	);
 };
+
+// className={cn(styles.table__caption, {
+// 	[styles.table__caption_light]: theme,
+// })}
 
 export default Employe;

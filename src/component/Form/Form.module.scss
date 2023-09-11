@@ -1,5 +1,4 @@
 .form {
-	color: rgba(215, 219, 222, 0.789);
 	padding: 10px 5px 5px 5px;
 	&__container {
 		position: relative;
@@ -13,6 +12,10 @@
 		background-color: rgb(48, 47, 47);
 		top: -27px;
 		left: 5px;
+		&_light {
+			color: #000;
+			background-color: #fff;
+		}
 	}
 	&__input {
 		width: 100%;
@@ -20,6 +23,9 @@
 		border: 1px solid rgb(102, 102, 102);
 		border-radius: 6px;
 		background-color: rgb(48, 47, 47);
+		&_light {
+			background-color: #fff;
+		}
 	}
 	&__select {
 		width: 100%;
@@ -28,6 +34,9 @@
 		border-radius: 6px;
 		background-color: rgb(48, 47, 47);
 		margin-top: 12px;
+		&_light {
+			background-color: #fff;
+		}
 	}
 	&__checkbox {
 		display: block;
@@ -35,6 +44,12 @@
 		height: 18px;
 		border: 1px solid green;
 		border-radius: 6px;
+	}
+	&__label {
+		color: rgba(215, 219, 222, 0.789);
+		&_light {
+			color: #000;
+		}
 	}
 	&__button {
 		display: block;
@@ -45,6 +60,10 @@
 		border: 1px solid transparent;
 		background-color: rgb(102, 102, 102);
 		color: rgba(215, 219, 222, 0.789);
+		&_light {
+			background-color: rgb(165, 164, 164);
+			color: #000;
+		}
 	}
 	&__line {
 		width: 90%;
@@ -95,8 +114,20 @@
 	transition: 0.3s;
 }
 
-.checkbox__switch:checked + .switch__label {
+.switch__label_light:after {
+	content: '';
+	position: absolute;
+	top: 4px;
+	left: 4px;
+	width: 12px;
+	height: 12px;
 	background: #fff;
+	border-radius: 9999px;
+	transition: 0.3s;
+}
+
+.checkbox__switch:checked + .switch__label {
+	background: green;
 }
 
 .checkbox__switch:checked + .switch__label:after {

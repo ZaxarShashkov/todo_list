@@ -1,17 +1,51 @@
-import React from 'react';
-import Form from './component/Form/Form';
-
-import './styles/App.scss';
+import React, { useEffect, useState, useContext, createContext } from 'react';
+import styles from './styles/App.module.scss';
 import Table from './component/Table/Table';
+import Form from './component/Form/Form';
+import cn from 'classnames';
+import { IData } from './interfaces/IData';
+
+const data: IData[] = [
+	{ name: 'Zakhar', age: 27, subscription: 'Subscribed', employment: 'Employed' },
+	{ name: 'Alex', age: 35, subscription: 'Other', employment: 'Unemployed' },
+	{ name: 'Denis', age: 25, subscription: 'Not Subscribed', employment: 'Employed' },
+	{ name: 'Kseniya', age: 23, subscription: 'Subscribed', employment: 'Employed' },
+	{ name: 'Mariya', age: 18, subscription: 'Other', employment: 'Unemployed' },
+	{ name: 'Dmitriy', age: 43, subscription: 'Not Subscribed', employment: 'Employed' },
+	{ name: 'Ivan', age: 39, subscription: 'Subscribed', employment: 'Employed' },
+	{ name: 'Viktor', age: 21, subscription: 'Other', employment: 'Unemployed' },
+];
+
+export const ThemeContext = createContext<any>(null);
 
 function App() {
+	const [theme, setTheme] = useState<any>(false);
+
+	const handleChangeTheme = () => {
+		setTheme(!theme);
+	};
+	console.log(theme);
+
+	useEffect(() => {
+		localStorage.setItem('data', JSON.stringify(data));
+	}, []);
+
+	useEffect(() => {
+		console.log(localStorage.getItem('data'));
+	});
+
 	return (
-		<div className='App'>
-			<div className='App__container'>
-				<Form />
-				<Table />
+		<ThemeContext.Provider value={{ theme, handleChangeTheme }}>
+			<div className={styles.App}>
+				<div
+					className={cn(styles.App__container, {
+						[styles.App__container_light]: theme,
+					})}>
+					<Form />
+					<Table />
+				</div>
 			</div>
-		</div>
+		</ThemeContext.Provider>
 	);
 }
 
