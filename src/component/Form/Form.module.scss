@@ -26,6 +26,14 @@
 		&_light {
 			background-color: #fff;
 		}
+		&::placeholder {
+			color: rgba(215, 219, 222, 0.789);
+			padding-left: 5px;
+		}
+		&:hover,
+		&:focus {
+			border-color: green;
+		}
 	}
 	&__select {
 		width: 100%;

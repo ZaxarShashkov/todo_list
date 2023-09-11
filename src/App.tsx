@@ -5,34 +5,55 @@ import Form from './component/Form/Form';
 import cn from 'classnames';
 import { IData } from './interfaces/IData';
 
-const data: IData[] = [
-	{ name: 'Zakhar', age: 27, subscription: 'Subscribed', employment: 'Employed' },
-	{ name: 'Alex', age: 35, subscription: 'Other', employment: 'Unemployed' },
-	{ name: 'Denis', age: 25, subscription: 'Not Subscribed', employment: 'Employed' },
-	{ name: 'Kseniya', age: 23, subscription: 'Subscribed', employment: 'Employed' },
-	{ name: 'Mariya', age: 18, subscription: 'Other', employment: 'Unemployed' },
-	{ name: 'Dmitriy', age: 43, subscription: 'Not Subscribed', employment: 'Employed' },
-	{ name: 'Ivan', age: 39, subscription: 'Subscribed', employment: 'Employed' },
-	{ name: 'Viktor', age: 21, subscription: 'Other', employment: 'Unemployed' },
-];
+// const data: IData[] = [
+// 	{ name: 'Zakhar', age: 27, subscription: 'Subscribed', employment: 'Employed' },
+// 	{ name: 'Alex', age: 35, subscription: 'Other', employment: 'Unemployed' },
+// 	{ name: 'Denis', age: 25, subscription: 'Not Subscribed', employment: 'Employed' },
+// 	{ name: 'Kseniya', age: 23, subscription: 'Subscribed', employment: 'Employed' },
+// 	{ name: 'Mariya', age: 18, subscription: 'Other', employment: 'Unemployed' },
+// 	{ name: 'Dmitriy', age: 43, subscription: 'Not Subscribed', employment: 'Employed' },
+// 	{ name: 'Ivan', age: 39, subscription: 'Subscribed', employment: 'Employed' },
+// 	{ name: 'Viktor', age: 21, subscription: 'Other', employment: 'Unemployed' },
+// ];
 
 export const ThemeContext = createContext<any>(null);
 
 function App() {
-	const [theme, setTheme] = useState<any>(false);
+	const [data, setData] = useState<IData[]>([
+		{ name: 'Zakhar', age: 27, subscription: 'Subscribed', employment: 'Employed' },
+		{ name: 'Alex', age: 35, subscription: 'Other', employment: 'Unemployed' },
+		{ name: 'Denis', age: 25, subscription: 'Not Subscribed', employment: 'Employed' },
+		{ name: 'Kseniya', age: 23, subscription: 'Subscribed', employment: 'Employed' },
+		{ name: 'Mariya', age: 18, subscription: 'Other', employment: 'Unemployed' },
+		{ name: 'Dmitriy', age: 43, subscription: 'Not Subscribed', employment: 'Employed' },
+		{ name: 'Ivan', age: 39, subscription: 'Subscribed', employment: 'Employed' },
+		{ name: 'Viktor', age: 21, subscription: 'Other', employment: 'Unemployed' },
+	]);
+
+	const [theme, setTheme] = useState<boolean>(false);
 
 	const handleChangeTheme = () => {
 		setTheme(!theme);
 	};
-	console.log(theme);
 
 	useEffect(() => {
 		localStorage.setItem('data', JSON.stringify(data));
-	}, []);
+		console.log(localStorage.getItem('data'));
+	}, [data]);
 
 	useEffect(() => {
-		console.log(localStorage.getItem('data'));
-	});
+		getLocalStorage('data');
+	}, []);
+
+	const getLocalStorage = (key: string, defaultValue = null): string | null => {
+		const store: string | null = localStorage.getItem(key);
+
+		if (typeof store === 'string') {
+			return JSON.parse(store);
+		}
+
+		return defaultValue;
+	};
 
 	return (
 		<ThemeContext.Provider value={{ theme, handleChangeTheme }}>
