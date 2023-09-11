@@ -49,8 +49,8 @@ const Table = (props: Props) => {
 					{data.map((item: IData) => {
 						console.log(item, 'asdas');
 						return (
-							<EmployeeContext.Provider value={item}>
-								<Employe key={uuidv4()} />
+							<EmployeeContext.Provider value={item} key={item.id}>
+								<Employe key={item.id} />
 							</EmployeeContext.Provider>
 						);
 					})}

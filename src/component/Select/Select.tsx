@@ -3,8 +3,6 @@ import React, {
 	MouseEvent,
 	useEffect,
 	useRef,
-	DetailedHTMLProps,
-	HTMLAttributes,
 	useContext,
 } from 'react';
 

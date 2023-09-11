@@ -12,24 +12,26 @@ import styles from './Form.module.scss';
 import Select from '../Select/Select';
 import { IData } from '../../interfaces/IData';
 
-interface IValue {
-	name: string;
-	age: number | string;
-	subscription: string;
-	employment: string;
-}
-
 export const FormContext = createContext<any>(null);
 
 const Form = (): JSX.Element => {
+	const { theme, handleChangeTheme, data, setData } = useContext(ThemeContext);
+
 	const [value, setValue] = useState<IData>({
+		id: data.length + 1,
 		name: '',
 		age: '',
 		subscription: '',
 		employment: '',
 	});
+
+	
+
+	const onRemove = (e: MouseEvent) => {
+		e.preventDefault();
+	};
+
 	const [checked, setChecked] = useState<boolean>(false);
-	const { theme, handleChangeTheme, data, setData } = useContext(ThemeContext);
 
 	useEffect(() => {
 		if (checked) {
@@ -53,7 +55,7 @@ const Form = (): JSX.Element => {
 	const addEmployee = (e: MouseEvent) => {
 		e.preventDefault();
 		setData([...data, value]);
-		setValue({ name: '', age: '', subscription: '', employment: '' });
+		setValue({ id: data.length, name: '', age: '', subscription: '', employment: '' });
 	};
 
 	return (
@@ -140,7 +142,8 @@ const Form = (): JSX.Element => {
 					<button
 						className={cn(styles.form__button, {
 							[styles.form__button_light]: theme,
-						})}>
+						})}
+						onClick={(e) => onRemove(e)}>
 						Delete
 					</button>
 				</form>
