@@ -6,13 +6,12 @@ import { EmployeeContext } from '../Table/Table';
 
 const Employe = () => {
 	const [select, setSelect] = useState<boolean>(false);
-	const { theme, setId } = useContext(ThemeContext);
-	const { id, name, age, subscription, employment, data } = useContext(EmployeeContext);
-	console.log(data, 'dasdazzzz');
+	const { theme, selectedEmployee, setSelectedEmployee } = useContext(ThemeContext);
+	const { id, name, age, subscription, employment } = useContext(EmployeeContext);
 
 	const handleSelect = (e: MouseEvent<HTMLDivElement>) => {
 		setSelect(!select);
-		console.log(e.currentTarget.dataset.id);
+		setSelectedEmployee(Number(e.currentTarget.dataset.id));
 	};
 
 	return (

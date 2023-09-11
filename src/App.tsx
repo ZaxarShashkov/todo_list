@@ -19,6 +19,9 @@ function App() {
 		{ id: 8, name: 'Viktor', age: 21, subscription: 'Other', employment: 'Unemployed' },
 	]);
 
+	const [selectedEmployee, setSelectedEmployee] = useState<any>(null);
+	console.log(selectedEmployee, 'selected');
+
 	const [theme, setTheme] = useState<boolean>(false);
 
 	const handleChangeTheme = () => {
@@ -44,7 +47,15 @@ function App() {
 	};
 
 	return (
-		<ThemeContext.Provider value={{ theme, handleChangeTheme, setData, data }}>
+		<ThemeContext.Provider
+			value={{
+				theme,
+				handleChangeTheme,
+				setData,
+				data,
+				selectedEmployee,
+				setSelectedEmployee,
+			}}>
 			<div className={styles.App}>
 				<div
 					className={cn(styles.App__container, {

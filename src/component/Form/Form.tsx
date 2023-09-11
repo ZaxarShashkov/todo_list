@@ -15,7 +15,8 @@ import { IData } from '../../interfaces/IData';
 export const FormContext = createContext<any>(null);
 
 const Form = (): JSX.Element => {
-	const { theme, handleChangeTheme, data, setData } = useContext(ThemeContext);
+	const { theme, handleChangeTheme, data, setData, setSelectedEmployee, selectedEmployee } =
+		useContext(ThemeContext);
 
 	const [value, setValue] = useState<IData>({
 		id: data.length + 1,
@@ -24,12 +25,6 @@ const Form = (): JSX.Element => {
 		subscription: '',
 		employment: '',
 	});
-
-	
-
-	const onRemove = (e: MouseEvent) => {
-		e.preventDefault();
-	};
 
 	const [checked, setChecked] = useState<boolean>(false);
 
@@ -40,6 +35,11 @@ const Form = (): JSX.Element => {
 			setValue({ ...value, employment: 'Unemployed' });
 		}
 	}, [checked]);
+
+	const onRemove = (e: MouseEvent) => {
+		e.preventDefault();
+		setData(data.filter((item: IData) => item.id !== selectedEmployee));
+	};
 
 	const onChangeName = (e: ChangeEvent<HTMLInputElement>) => {
 		setValue({ ...value, name: e.currentTarget.value });

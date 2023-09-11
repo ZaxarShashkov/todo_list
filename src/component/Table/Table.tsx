@@ -47,7 +47,6 @@ const Table = (props: Props) => {
 				</div>
 				<div className={styles.table__main}>
 					{data.map((item: IData) => {
-						console.log(item, 'asdas');
 						return (
 							<EmployeeContext.Provider value={item} key={item.id}>
 								<Employe key={item.id} />
