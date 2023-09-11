@@ -1,13 +1,18 @@
-import React, { useContext } from 'react';
+import React, { useContext, createContext } from 'react';
 import cn from 'classnames';
 import styles from './Table.module.scss';
 import Employe from '../Employe/Employe';
 import { ThemeContext } from '../../App';
+import { IData } from '../../interfaces/IData';
+// import { v4 as uuidv4 } from 'uuid';
+const { v4: uuidv4 } = require('uuid');
 
 type Props = {};
+export const EmployeeContext = createContext<any>(null);
 
 const Table = (props: Props) => {
-	const { theme } = useContext(ThemeContext);
+	const { theme, data } = useContext(ThemeContext);
+
 	return (
 		<div className={styles.table__container}>
 			<div className={styles.table}>
@@ -41,9 +46,14 @@ const Table = (props: Props) => {
 					</p>
 				</div>
 				<div className={styles.table__main}>
-					<Employe />
-					<Employe />
-					<Employe />
+					{data.map((item: IData) => {
+						console.log(item, 'asdas');
+						return (
+							<EmployeeContext.Provider value={item}>
+								<Employe key={uuidv4()} />
+							</EmployeeContext.Provider>
+						);
+					})}
 				</div>
 			</div>
 		</div>

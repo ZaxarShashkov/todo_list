@@ -42,7 +42,6 @@ function App() {
 
 	useEffect(() => {
 		localStorage.setItem('data', JSON.stringify(data));
-		console.log(localStorage.getItem('data'));
 	}, [data]);
 
 	const getLocalStorage = (key: string, defaultValue = null): string | null => {
