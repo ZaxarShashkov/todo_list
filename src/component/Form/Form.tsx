@@ -44,11 +44,25 @@ const Form = (): JSX.Element => {
 		setValue({ ...value, name: e.currentTarget.value });
 	};
 	const onChangeAge = (e: ChangeEvent<HTMLInputElement>) => {
-		setValue({ ...value, age: e.currentTarget.value });
+		setValue({ ...value, age: Number(e.currentTarget.value) });
 	};
 
 	const onChangeEmployed = () => {
 		setChecked(!checked);
+	};
+
+	const onClickAgeUp = () => {
+		if (Number(value.age) < 18) {
+			setValue({ ...value, age: Number(value.age) + 18 });
+		} else if (Number(value.age) >= 18) {
+			setValue({ ...value, age: Number(value.age) + 1 });
+		}
+	};
+
+	const onClickAgeDown = () => {
+		if (Number(value.age) > 18) {
+			setValue({ ...value, age: Number(value.age) - 1 });
+		}
 	};
 
 	const addEmployee = (e: MouseEvent) => {
@@ -76,6 +90,38 @@ const Form = (): JSX.Element => {
 						value={value.name}
 						onChange={(e) => onChangeName(e)}
 					/>
+					<div className={styles.form__input_container}>
+						<div className={styles.arrow__close} onClick={onClickAgeDown}>
+							<svg
+								width='20'
+								height='6'
+								viewBox='0 0 20 9'
+								fill='none'
+								xmlns='http://www.w3.org/2000/svg'>
+								<path
+									fillRule='evenodd'
+									clipRule='evenodd'
+									d='M0.433594 0.508411C0.705097 0.195587 1.17879 0.16209 1.49161 0.433594L8.9007 6.86403C9.49367 7.37867 10.5063 7.37867 11.0993 6.86403L18.5084 0.433594C18.8212 0.16209 19.2949 0.195587 19.5664 0.508411C19.8379 0.821235 19.8044 1.29493 19.4916 1.56643L12.0825 7.99686C10.9255 9.00106 9.07453 9.00106 7.9175 7.99686L0.508411 1.56643C0.195587 1.29493 0.16209 0.821235 0.433594 0.508411Z'
+									fill='#d7dbdec9'
+								/>
+							</svg>
+						</div>
+						<div className={styles.arrow__open} onClick={onClickAgeUp}>
+							<svg
+								width='20'
+								height='6'
+								viewBox='0 0 20 9'
+								fill='none'
+								xmlns='http://www.w3.org/2000/svg'>
+								<path
+									fillRule='evenodd'
+									clipRule='evenodd'
+									d='M0.433594 0.508411C0.705097 0.195587 1.17879 0.16209 1.49161 0.433594L8.9007 6.86403C9.49367 7.37867 10.5063 7.37867 11.0993 6.86403L18.5084 0.433594C18.8212 0.16209 19.2949 0.195587 19.5664 0.508411C19.8379 0.821235 19.8044 1.29493 19.4916 1.56643L12.0825 7.99686C10.9255 9.00106 9.07453 9.00106 7.9175 7.99686L0.508411 1.56643C0.195587 1.29493 0.16209 0.821235 0.433594 0.508411Z'
+									fill='#d7dbdec9'
+								/>
+							</svg>
+						</div>
+					</div>
 					<input
 						className={cn(styles.form__input, {
 							[styles.form__input_light]: theme,
