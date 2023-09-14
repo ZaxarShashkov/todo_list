@@ -52,7 +52,11 @@ const Form = (): JSX.Element => {
 		setValue({ ...value, name: e.currentTarget.value });
 	};
 	const onChangeAge = (e: ChangeEvent<HTMLInputElement>) => {
-		setValue({ ...value, age: Number(e.currentTarget.value) });
+		if (!Number.isNaN(Number(e.currentTarget.value))) {
+			setValue({ ...value, age: Number(e.currentTarget.value) });
+		} else {
+			return;
+		}
 	};
 
 	const onClickAgeUp = () => {
