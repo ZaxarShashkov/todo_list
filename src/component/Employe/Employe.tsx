@@ -5,10 +5,11 @@ import { EmployeeContext } from '../Table/Table';
 
 import styles from './Employe.module.scss';
 import cn from 'classnames';
+import { IThemeContext } from '../../interfaces/IThemeContext';
 
 const Employe = (): JSX.Element => {
 	const [select, setSelect] = useState<boolean>(false);
-	const { theme, setSelectedEmployee } = useContext(ThemeContext);
+	const { theme, setSelectedEmployee } = useContext(ThemeContext) as IThemeContext;
 	const { id, name, age, subscription, employment } = useContext(EmployeeContext);
 
 	const handleSelect = (e: MouseEvent<HTMLDivElement>) => {

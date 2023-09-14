@@ -16,11 +16,14 @@ import { CheckBox } from '../Checkbox/Checkbox';
 import cn from 'classnames';
 import styles from './Form.module.scss';
 import { v4 as uuidv4 } from 'uuid';
+import { IThemeContext } from '../../interfaces/IThemeContext';
 
 export const FormContext = createContext<any>(null);
 
 const Form = (): JSX.Element => {
-	const { theme, handleChangeTheme, data, setData, selectedEmployee } = useContext(ThemeContext);
+	const { theme, handleChangeTheme, data, setData, selectedEmployee } = useContext(
+		ThemeContext
+	) as IThemeContext;
 	const [value, setValue] = useState<IData>({
 		id: uuidv4(),
 		name: '',

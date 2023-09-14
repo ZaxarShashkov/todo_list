@@ -1,17 +1,16 @@
-import React, { useContext, createContext, ReactNode } from 'react';
+import React, { useContext, createContext } from 'react';
 
 import { ThemeContext } from '../../App';
 import { IData } from '../../interfaces/IData';
-
+import { IThemeContext } from '../../interfaces/IThemeContext';
 import Employe from '../Employe/Employe';
-
 import cn from 'classnames';
 import styles from './Table.module.scss';
 
 export const EmployeeContext = createContext<any>(null);
 
 const Table = (): JSX.Element => {
-	const { theme, data } = useContext(ThemeContext);
+	const { theme, data } = useContext(ThemeContext) as IThemeContext;
 
 	return (
 		<div className={styles.table__container}>
@@ -46,7 +45,7 @@ const Table = (): JSX.Element => {
 					</p>
 				</div>
 				<div className={styles.table__main}>
-					{data.map((item: IData) => {
+					{data?.map((item: IData) => {
 						return (
 							<EmployeeContext.Provider value={item} key={item.id}>
 								<Employe key={item.id} />

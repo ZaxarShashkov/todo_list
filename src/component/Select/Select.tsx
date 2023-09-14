@@ -5,12 +5,13 @@ import { ThemeContext } from '../../App';
 
 import styles from './Select.module.scss';
 import cn from 'classnames';
+import { IThemeContext } from '../../interfaces/IThemeContext';
 
 const Select = (): JSX.Element => {
 	const [isVisible, setIsVisible] = useState<boolean>(false);
 	const { value, setValue } = useContext(FormContext);
 
-	const { theme } = useContext(ThemeContext);
+	const { theme } = useContext(ThemeContext) as IThemeContext;
 
 	const onVisible = () => {
 		setIsVisible((isVisible) => !isVisible);

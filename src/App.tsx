@@ -4,8 +4,9 @@ import Table from './component/Table/Table';
 import Form from './component/Form/Form';
 import cn from 'classnames';
 import { IData } from './interfaces/IData';
+import { IThemeContext } from './interfaces/IThemeContext';
 
-export const ThemeContext = createContext<any>(null);
+export const ThemeContext = createContext<IThemeContext | null>(null);
 
 function App(): JSX.Element {
 	const [data, setData] = useState<IData[]>([
@@ -25,7 +26,7 @@ function App(): JSX.Element {
 		{ id: '8', name: 'Viktor', age: 21, subscription: 'Other', employment: 'Unemployed' },
 	]);
 
-	const [selectedEmployee, setSelectedEmployee] = useState<any>(null);
+	const [selectedEmployee, setSelectedEmployee] = useState<string | number | undefined>('');
 
 	const [theme, setTheme] = useState<boolean>(false);
 
