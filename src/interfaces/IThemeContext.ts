@@ -6,5 +6,5 @@ export interface IThemeContext {
 	setData: (arg: IData[]) => void;
 	data: IData[];
 	selectedEmployee: string | undefined | number;
-	setSelectedEmployee: (arg: string | undefined | number) => void | undefined;
+	setSelectedEmployee: (arg: string | undefined | number) => void;
 }

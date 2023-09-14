@@ -13,7 +13,7 @@ const Employe = (): JSX.Element => {
 	const { id, name, age, subscription, employment } = useContext(EmployeeContext);
 
 	const handleSelect = (e: MouseEvent<HTMLDivElement>) => {
-		setSelect(!select);
+		setSelect((select) => !select);
 		setSelectedEmployee(e.currentTarget.dataset.id);
 	};
 

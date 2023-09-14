@@ -40,7 +40,7 @@ const Form = (): JSX.Element => {
 		} else {
 			setValue({ ...value, employment: 'Unemployed' });
 		}
-	}, [checked]);
+	}, [checked, value.name]);
 
 	const onRemove = (e: MouseEvent) => {
 		e.preventDefault();
@@ -52,10 +52,6 @@ const Form = (): JSX.Element => {
 	};
 	const onChangeAge = (e: ChangeEvent<HTMLInputElement>) => {
 		setValue({ ...value, age: Number(e.currentTarget.value) });
-	};
-
-	const onChangeEmployed = () => {
-		setChecked(!checked);
 	};
 
 	const onClickAgeUp = () => {
@@ -156,7 +152,8 @@ const Form = (): JSX.Element => {
 						className={cn(styles.form__button, {
 							[styles.form__button_light]: theme,
 						})}
-						onClick={addEmployee}>
+						onClick={addEmployee}
+						disabled={!value.name || !value.age || !value.subscription}>
 						Insert
 					</button>
 					<div className={styles.form__line}></div>
