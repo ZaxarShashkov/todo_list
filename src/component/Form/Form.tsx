@@ -17,8 +17,9 @@ import cn from 'classnames';
 import styles from './Form.module.scss';
 import { v4 as uuidv4 } from 'uuid';
 import { IThemeContext } from '../../interfaces/IThemeContext';
+import { IFormContenxt } from '../../interfaces/IFormContext';
 
-export const FormContext = createContext<any>(null);
+export const FormContext = createContext<IFormContenxt | null>(null);
 
 const Form = (): JSX.Element => {
 	const { theme, handleChangeTheme, data, setData, selectedEmployee } = useContext(
@@ -72,6 +73,7 @@ const Form = (): JSX.Element => {
 		e.preventDefault();
 		setData([...data, value]);
 		setValue({ id: uuidv4(), name: '', age: '', subscription: '', employment: '' });
+		setChecked(false);
 	};
 
 	return (

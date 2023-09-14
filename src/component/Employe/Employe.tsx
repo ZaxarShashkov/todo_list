@@ -6,11 +6,12 @@ import { EmployeeContext } from '../Table/Table';
 import styles from './Employe.module.scss';
 import cn from 'classnames';
 import { IThemeContext } from '../../interfaces/IThemeContext';
+import { IData } from '../../interfaces/IData';
 
 const Employe = (): JSX.Element => {
 	const [select, setSelect] = useState<boolean>(false);
 	const { theme, setSelectedEmployee } = useContext(ThemeContext) as IThemeContext;
-	const { id, name, age, subscription, employment } = useContext(EmployeeContext);
+	const { id, name, age, subscription, employment } = useContext(EmployeeContext) as IData;
 
 	const handleSelect = (e: MouseEvent<HTMLDivElement>) => {
 		setSelect((select) => !select);

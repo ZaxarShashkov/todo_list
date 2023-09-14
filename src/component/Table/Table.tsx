@@ -7,7 +7,7 @@ import Employe from '../Employe/Employe';
 import cn from 'classnames';
 import styles from './Table.module.scss';
 
-export const EmployeeContext = createContext<any>(null);
+export const EmployeeContext = createContext<IData | null>(null);
 
 const Table = (): JSX.Element => {
 	const { theme, data } = useContext(ThemeContext) as IThemeContext;

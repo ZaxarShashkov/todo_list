@@ -6,10 +6,11 @@ import { ThemeContext } from '../../App';
 import styles from './Select.module.scss';
 import cn from 'classnames';
 import { IThemeContext } from '../../interfaces/IThemeContext';
+import { IFormContenxt } from '../../interfaces/IFormContext';
 
 const Select = (): JSX.Element => {
 	const [isVisible, setIsVisible] = useState<boolean>(false);
-	const { value, setValue } = useContext(FormContext);
+	const { value, setValue } = useContext(FormContext) as IFormContenxt;
 
 	const { theme } = useContext(ThemeContext) as IThemeContext;
 
